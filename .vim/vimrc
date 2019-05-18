@@ -1,0 +1,31 @@
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+call plug#begin('~/.vim/plugged')
+
+Plug 'ayu-theme/ayu-vim' " or other package manager
+Plug 'liuchengxu/space-vim-dark'
+
+call plug#end()
+
+" IndentLine {{
+let g:indentLine_char = ''
+let g:indentLine_first_char = ''
+let g:indentLine_showFirstIndentLevel = 1
+let g:indentLine_setColors = 0
+" }}
+
+set number
+set termguicolors     " enable true colors support
+
+"let ayucolor="light"   " for dark version of theme
+
+syntax on
+colorscheme space-vim-dark 
+
+hi Comment guifg=#5C6370 ctermfg=59
+
+

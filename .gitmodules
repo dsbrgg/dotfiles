@@ -1,0 +1,6 @@
+[submodule ".vim/plugged/space-vim-dark"]
+	path = .vim/plugged/space-vim-dark
+	url = https://github.com/liuchengxu/space-vim-dark.git
+[submodule ".vim/plugged/ayu-vim"]
+	path = .vim/plugged/ayu-vim
+	url = https://github.com/ayu-theme/ayu-vim.git
