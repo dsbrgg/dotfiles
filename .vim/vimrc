@@ -20,6 +20,8 @@ set shiftwidth=2    " Indents will have a width of 4
 set softtabstop=2   " Sets the number of columns for a TAB
 set expandtab       " Expand TABs to spaces
 
+let g:indentLine_char_list = ['|', '¦', '┆', '┊'] " different chars on each identation level
+
 set directory^=$HOME/.vim/tmp// " send swap files on .vim folder
 
 set number
