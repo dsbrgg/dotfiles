@@ -4,3 +4,6 @@
 [submodule ".vim/plugged/ayu-vim"]
 	path = .vim/plugged/ayu-vim
 	url = https://github.com/ayu-theme/ayu-vim.git
+[submodule ".oh-my-zsh"]
+	path = .oh-my-zsh
+	url = https://github.com/robbyrussell/oh-my-zsh.git
