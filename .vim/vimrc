@@ -10,11 +10,12 @@ Plug 'ayu-theme/ayu-vim'
 Plug 'liuchengxu/space-vim-dark'
 Plug 'Yggdroot/indentLine'
 Plug 'scrooloose/nerdtree'
+Plug 'elzr/vim-json'
 
 call plug#end()
 
 "autocmd vimenter * NERDTree starts nerdtree on vim startup.
-map <C-n> :NERDTreeToggle<CR>  " Map NerdTree to open with Ctrl+N
+map <C-n> :NERDTreeToggle<CR>
 
 set tabstop=2       " The width of a TAB is set to 4.
                     " Still it is a \t. It is just that
@@ -24,7 +25,8 @@ set shiftwidth=2    " Indents will have a width of 4
 set softtabstop=2   " Sets the number of columns for a TAB
 set expandtab       " Expand TABs to spaces
 
-let g:indentLine_char_list = ['|', '¦', '┆', '┊'] " different chars on each identation level
+let g:vim_json_syntax_concealcursor = ""
+let g:indentLine_concealcursor = ""
 
 set directory^=$HOME/.vim/tmp// " send swap files on .vim folder
 

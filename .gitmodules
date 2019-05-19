@@ -13,3 +13,6 @@
 [submodule ".vim/plugged/nerdtree"]
 	path = .vim/plugged/nerdtree
 	url = https://github.com/scrooloose/nerdtree.git
+[submodule ".vim/plugged/vim-json"]
+	path = .vim/plugged/vim-json
+	url = https://github.com/elzr/vim-json
