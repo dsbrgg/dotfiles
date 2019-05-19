@@ -9,6 +9,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'ayu-theme/ayu-vim' " or other package manager
 Plug 'liuchengxu/space-vim-dark'
 Plug 'Yggdroot/indentLine'
+Plug 'scrooloose/nerdtree'
 
 call plug#end()
 
