@@ -6,12 +6,15 @@ endif
 
 call plug#begin('~/.vim/plugged')
 
-Plug 'ayu-theme/ayu-vim' " or other package manager
+Plug 'ayu-theme/ayu-vim'
 Plug 'liuchengxu/space-vim-dark'
 Plug 'Yggdroot/indentLine'
 Plug 'scrooloose/nerdtree'
 
 call plug#end()
+
+"autocmd vimenter * NERDTree starts nerdtree on vim startup.
+map <C-n> :NERDTreeToggle<CR>  " Map NerdTree to open with Ctrl+N
 
 set tabstop=2       " The width of a TAB is set to 4.
                     " Still it is a \t. It is just that
