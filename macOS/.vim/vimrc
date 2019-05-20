@@ -1,0 +1,46 @@
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+call plug#begin('~/.vim/plugged')
+
+Plug 'ayu-theme/ayu-vim'
+Plug 'liuchengxu/space-vim-dark'
+Plug 'Yggdroot/indentLine'
+Plug 'scrooloose/nerdtree'
+Plug 'elzr/vim-json'
+Plug 'damage220/vim-finder'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+
+call plug#end()
+
+map <C-n> :NERDTreeToggle<CR>
+map <C-m> :NERDTreeFocus<CR>
+
+filetype plugin indent on
+
+set backspace=indent,eol,start
+
+set autoindent
+
+set tabstop=2      
+set shiftwidth=2   
+set softtabstop=2
+set expandtab
+retab
+
+let g:vim_json_syntax_concealcursor = ""
+let g:indentLine_concealcursor = ""
+let g:indentLine_color_term = 239
+
+set directory^=$HOME/.vim/tmp// " send swap files on .vim folder
+
+set number
+set termguicolors     " enable true colors support
+
+syntax on
+colorscheme space-vim-dark 
+
+hi Comment guifg=#5C6370 ctermfg=59
