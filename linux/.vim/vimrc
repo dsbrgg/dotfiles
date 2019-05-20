@@ -13,6 +13,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'elzr/vim-json'
 Plug 'damage220/vim-finder'
 Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'vim-syntastic/syntastic'
 
 call plug#end()
 
@@ -31,7 +32,20 @@ set softtabstop=2
 set expandtab
 retab
 
+
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_javascript_eslint_exe = 'npm run lint --'
+let g:syntastic_javascript_checkers = ['eslint']
+
 let g:vim_json_syntax_concealcursor = ""
+
 let g:indentLine_concealcursor = ""
 let g:indentLine_color_term = 239
 
