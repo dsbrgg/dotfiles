@@ -12,33 +12,35 @@ Plug 'Yggdroot/indentLine'
 Plug 'scrooloose/nerdtree'
 Plug 'elzr/vim-json'
 Plug 'damage220/vim-finder'
+Plug 'Xuyuanp/nerdtree-git-plugin'
 
 call plug#end()
 
-"autocmd vimenter * NERDTree starts nerdtree on vim startup.
 map <C-n> :NERDTreeToggle<CR>
 map <C-m> :NERDTreeFocus<CR>
 
-set tabstop=2       " The width of a TAB is set to 4.
-                    " Still it is a \t. It is just that
-                    " Vim will interpret it to be having
-                    " a width of 4.
-set shiftwidth=2    " Indents will have a width of 4
-set softtabstop=2   " Sets the number of columns for a TAB
-set expandtab       " Expand TABs to spaces
+filetype plugin indent on
+
+set backspace=indent,eol,start
+
+set autoindent
+
+set tabstop=2      
+set shiftwidth=2   
+set softtabstop=2
+set expandtab
+retab
 
 let g:vim_json_syntax_concealcursor = ""
 let g:indentLine_concealcursor = ""
+let g:indentLine_color_term = 239
 
 set directory^=$HOME/.vim/tmp// " send swap files on .vim folder
 
 set number
 set termguicolors     " enable true colors support
 
-"let ayucolor="light"   " for dark version of theme
-
 syntax on
 colorscheme space-vim-dark 
 
 hi Comment guifg=#5C6370 ctermfg=59
-
