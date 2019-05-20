@@ -13,7 +13,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'elzr/vim-json'
 Plug 'damage220/vim-finder'
 Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'vim-syntastic/syntastic'
+Plug 'w0rp/ale'
 
 call plug#end()
 
@@ -24,6 +24,9 @@ filetype plugin indent on
 
 set backspace=indent,eol,start
 
+scriptencoding utf-8
+set encoding=utf-8
+
 set autoindent
 
 set tabstop=2      
@@ -32,17 +35,11 @@ set softtabstop=2
 set expandtab
 retab
 
+let g:NERDTreeDirArrows=0
 
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_javascript_eslint_exe = 'npm run lint --'
-let g:syntastic_javascript_checkers = ['eslint']
+let g:ale_completion_enabled = 1
+let b:ale_linters = ['eslint']
+let g:ale_javascript_eslint_executable = 'npm run lint --'
 
 let g:vim_json_syntax_concealcursor = ""
 

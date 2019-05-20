@@ -1,6 +1,6 @@
 node_modules/
 
-.vim/.netrwhist
+**/.vim/.netrwhist
 
 linux/.vim/tmp/*
 !linux/.vim/tmp/.gitkeep
