@@ -2,5 +2,15 @@ node_modules/
 
 .vim/.netrwhist
 
-.vim/tmp/*
-!.vim/tmp/.gitkeep
+linux/.vim/tmp/*
+!linux/.vim/tmp/.gitkeep
+
+macOS/.vim/tmp/*
+!macOS/.vim/tmp/.gitkeep
+
+linux/.vim/plugged/*
+!linux/.vim/plugged/.gitkeep
+
+macOS/.vim/plugged/*
+!macOS/.vim/plugged/.gitkeep
+
