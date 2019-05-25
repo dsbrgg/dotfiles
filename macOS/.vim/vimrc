@@ -11,18 +11,106 @@ Plug 'liuchengxu/space-vim-dark'
 Plug 'Yggdroot/indentLine'
 Plug 'scrooloose/nerdtree'
 Plug 'elzr/vim-json'
-Plug 'damage220/vim-finder'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'w0rp/ale'
+Plug 'airblade/vim-gitgutter'
+Plug 'ervandew/supertab'
+Plug 'itchyny/lightline.vim'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+Plug 'jiangmiao/auto-pairs'
 
 call plug#end()
 
 map <C-n> :NERDTreeToggle<CR>
 map <C-m> :NERDTreeFocus<CR>
 
+autocmd BufEnter * lcd %:p:h
+
 filetype plugin indent on
 
+set cmdheight=1
+set linespace=0
+set noshowmode
+
+set history=500
+
+" Automatically :write before running commands
+set autowrite
+
+" Make backspace act as it should
 set backspace=indent,eol,start
+set whichwrap+=<,>,h,l
+
+"Always show current position
+set ruler
+
+" Set 7 lines to the cursor - when moving vertically using j/k
+set so=12
+
+" Ignore case when searching
+set ignorecase
+
+" When searching try to be smart about cases
+set smartcase
+
+" Highlight search results
+set hlsearch
+
+" Makes search act like search in modern browsers
+set incsearch
+
+" Don't redraw while executing macros (good performance config)
+set lazyredraw
+
+" For regular expressions turn magic on
+set magic
+
+" No annoying sound on errors
+set noerrorbells
+set novisualbell
+set t_vb=
+set tm=500
+
+" Visual mode pressing * or # searches for the current selection
+" Super useful! From an idea by Michael Naumann
+vnoremap <silent> * :<C-u>call VisualSelection('', '')<CR>/<C-R>=@/<CR><CR>
+vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
+
+" Map <Space> to / (search) and Ctrl-<Space> to ? (backwards search)
+map <space> /
+map <c-space> ?
+
+" Always show the status line
+set laststatus=2
+
+" Move a line of text using ALT+[jk] or Command+[jk] on mac
+nmap <M-j> mz:m+<cr>`z
+nmap <M-k> mz:m-2<cr>`z
+vmap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
+vmap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
+
+if has("mac") || has("macunix")
+  nmap <D-j> <M-j>
+  nmap <D-k> <M-k>
+  vmap <D-j> <M-j>
+  vmap <D-k> <M-k>
+endif
+
+" Delete trailing white space on save, useful for some filetypes ;)
+fun! CleanExtraSpaces()
+  let save_cursor = getpos(".")
+  let old_query = getreg('/')
+  silent! %s/\s\+$//e
+  call setpos('.', save_cursor)
+  call setreg('/', old_query)
+endfun
+
+if has("autocmd")
+  autocmd BufWritePre *.txt,*.js,*.py,*.wiki,*.sh,*.coffee :call CleanExtraSpaces()
+endif
+
 
 scriptencoding utf-8
 set encoding=utf-8
@@ -35,7 +123,22 @@ set softtabstop=2
 set expandtab
 retab
 
+set path+=**                                                                    
+set wildignore+=**/node_modules/** 
+
+set updatetime=50
+
+let g:gitgutter_override_sign_column_highlight = 0
+let g:gitgutter_sign_added = '++'
+let g:gitgutter_sign_modified = '~~'
+let g:gitgutter_sign_removed = '--'
+let g:gitgutter_sign_removed_first_line = '^^'
+let g:gitgutter_sign_modified_removed = 'ww'
+
+highlight SignColumn ctermbg=white    " terminal Vim
+
 let g:NERDTreeDirArrows=0
+let g:NERDTreeWinSize = 40
 
 let g:ale_completion_enabled = 1
 let b:ale_linters = ['eslint']
@@ -46,6 +149,23 @@ let g:vim_json_syntax_concealcursor = ""
 let g:indentLine_concealcursor = ""
 let g:indentLine_color_term = 239
 
+let g:lightline = { 'colorscheme': 'jellybeans' }
+
+let g:multi_cursor_use_default_mapping=0
+
+" Default mapping
+let g:multi_cursor_start_word_key      = '<C-a>'
+let g:multi_cursor_select_all_word_key = '<A-a>'
+let g:multi_cursor_start_key           = 'g<C-a>'
+let g:multi_cursor_select_all_key      = 'g<A-a>'
+let g:multi_cursor_next_key            = '<C-a>'
+let g:multi_cursor_prev_key            = '<C-p>'
+let g:multi_cursor_skip_key            = '<C-x>'
+let g:multi_cursor_quit_key            = '<Esc>'
+
+set nobackup
+set nowb
+set noswapfile
 set directory^=$HOME/.vim/tmp// " send swap files on .vim folder
 
 set number
@@ -55,3 +175,11 @@ syntax on
 colorscheme space-vim-dark 
 
 hi Comment guifg=#5C6370 ctermfg=59
+
+" Returns true if paste mode is enabled
+function! HasPaste()
+    if &paste
+        return 'PASTE MODE  '
+    endif
+    return ''
+endfunction
