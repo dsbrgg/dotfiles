@@ -26,6 +26,15 @@ call plug#end()
 map <C-n> :NERDTreeToggle<CR>
 map <C-m> :NERDTreeFocus<CR>
 
+" Ctrl + t + arrow to move through vim tabhorizontals
+map <C-t><up> :tabr<CR>
+map <C-t><down> :tabl<CR>
+map <C-t><left> :tabp<CR>
+map <C-t><right> :tabn<CR>
+
+" split screen with ,w + v(vertical) || s(horizontal)
+nnoremap ,w <C-w>
+
 autocmd BufEnter * lcd %:p:h
 
 filetype plugin indent on
