@@ -40,6 +40,8 @@ autocmd BufEnter * lcd %:p:h
 
 filetype plugin indent on
 
+set foldmethod=indent
+
 set cmdheight=1
 set linespace=0
 set noshowmode
