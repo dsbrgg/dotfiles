@@ -22,6 +22,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'qpkorr/vim-renamer'
 Plug 'dkprice/vim-easygrep'
+Plug 'benmills/vimux'
 
 call plug#end()
 
@@ -40,6 +41,8 @@ nnoremap ,w <C-w>
 autocmd BufEnter * lcd %:p:h
 
 filetype plugin indent on
+
+set completeopt=longest,menuone
 
 set foldmethod=indent
 
@@ -182,12 +185,19 @@ set noswapfile
 set directory^=$HOME/.vim/tmp// " send swap files on .vim folder
 
 set number
-set termguicolors     " enable true colors support
 
 syntax on
 colorscheme space-vim-dark 
 
 hi Comment guifg=#5C6370 ctermfg=59
+
+if &term =~ '^screen'
+  " tmux will send xterm-style keys when its xterm-keys option is on
+  execute "set <xUp>=\e[1;*A"
+  execute "set <xDown>=\e[1;*B"
+  execute "set <xRight>=\e[1;*C"
+  execute "set <xLeft>=\e[1;*D"
+endif
 
 " Returns true if paste mode is enabled
 function! HasPaste()
