@@ -21,8 +21,6 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'qpkorr/vim-renamer'
-Plug 'dkprice/vim-easygrep'
-Plug 'benmills/vimux'
 
 call plug#end()
 
@@ -41,6 +39,9 @@ nnoremap ,w <C-w>
 autocmd BufEnter * lcd %:p:h
 
 filetype plugin indent on
+
+" Display all matching files when we tab complete
+set wildmenu
 
 set completeopt=longest,menuone
 
