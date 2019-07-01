@@ -8,7 +8,8 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'ayu-theme/ayu-vim'
 Plug 'liuchengxu/space-vim-dark'
-Plug 'Yggdroot/indentLine'
+Plug 'mhartington/oceanic-next'
+
 Plug 'scrooloose/nerdtree'
 Plug 'elzr/vim-json'
 Plug 'Xuyuanp/nerdtree-git-plugin'
@@ -21,7 +22,6 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'qpkorr/vim-renamer'
-Plug 'dkprice/vim-easygrep'
 Plug 'mattn/emmet-vim'
 
 call plug#end()
@@ -168,10 +168,7 @@ let g:ale_javascript_eslint_executable = 'npm run lint --'
 
 let g:vim_json_syntax_concealcursor = ""
 
-let g:indentLine_concealcursor = ""
-let g:indentLine_color_term = 239
-
-let g:lightline = { 'colorscheme': 'jellybeans' }
+let g:lightline = { 'colorscheme': 'one' }
 
 let g:multi_cursor_use_default_mapping=0
 
@@ -191,10 +188,13 @@ set noswapfile
 set directory^=$HOME/.vim/tmp// " send swap files on .vim folder
 
 set number
-" set termguicolors     " enable true colors support
+"set termguicolors     " enable true colors support
 
 syntax on
-colorscheme space-vim-dark 
+
+let g:oceanic_next_terminal_bold = 1
+let g:oceanic_next_terminal_italic = 1
+colorscheme OceanicNext
 
 hi Comment guifg=#5C6370 ctermfg=59
 
