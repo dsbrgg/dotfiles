@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-  export ZSH="/home/opuzzz/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -63,7 +63,8 @@ ZSH_THEME="kolo"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git debian python sudo zsh-autosuggestions)
 
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=201'
+# https://upload.wikimedia.org/wikipedia/commons/1/15/Xterm_256color_chart.svg
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=129'
 
 source $ZSH/oh-my-zsh.sh
 
@@ -93,5 +94,13 @@ source $ZSH/oh-my-zsh.sh
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
+alias emsurge="cd ~/Documents/repos/emsurge"
+alias ngrok="cd ~/Desktop && ./ngrok"
+alias tmux="TERM=xterm-256color tmux -u"
+
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
