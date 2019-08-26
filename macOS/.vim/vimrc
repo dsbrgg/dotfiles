@@ -42,8 +42,10 @@ filetype plugin indent on
 
 " Display all matching files when we tab complete
 set wildmenu
-
 set completeopt=longest,menuone
+
+" When splitting, split to the right and below current split
+set splitbelow splitright
 
 set foldmethod=indent
 

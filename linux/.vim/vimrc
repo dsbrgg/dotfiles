@@ -50,7 +50,12 @@ filetype plugin indent on
 
 set clipboard=unnamedplus
 
+" Show little menu to autocomplete vim commands
+set wildmenu
 set foldmethod=indent
+
+" When splitting, split to the right and below current split
+set splitbelow splitright
 
 set cmdheight=1
 set linespace=0
