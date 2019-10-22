@@ -24,6 +24,19 @@ Plug 'qpkorr/vim-renamer'
 
 call plug#end()
 
+" use system's clipboard
+set clipboard^=unnamed,unnamedplus
+noremap ,y "*y
+noremap ,p "*p
+noremap ,Y "+y
+noremap ,P "+p
+
+" delete line/characters without copying to clipboard
+" https://stackoverflow.com/questions/11993851/how-to-delete-not-cut-in-vim
+nnoremap <leader>d "_d
+xnoremap <leader>d "_d
+xnoremap <leader>p "_dP
+
 map <C-n> :NERDTreeToggle<CR>
 map <C-m> :NERDTreeFocus<CR>
 
