@@ -1,0 +1,5 @@
+auto-reload yes
+
+browser "chrome %u"
+
+cleanup-on-quit yes
