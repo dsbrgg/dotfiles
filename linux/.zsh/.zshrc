@@ -66,6 +66,24 @@ plugins=(git debian python sudo zsh-autosuggestions)
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=201'
 
 source $ZSH/oh-my-zsh.sh
+source $HOME/.manual/z.sh
+
+#####  z.sh optional configuration
+# $_Z_CMD to change the command name (default z).
+# $_Z_DATA to change the datafile (default $HOME/.z).
+# $_Z_NO_RESOLVE_SYMLINKS to prevent symlink resolution.
+# $_Z_NO_PROMPT_COMMAND to handle PROMPT_COMMAND/precmd  your-
+# .
+# $_Z_EXCLUDE_DIRS to an array of directory trees to  exclude.
+# $_Z_OWNER to allow usage when in 'sudo -s' mode.
+
+# sets caps lock as escape key
+setxkbmap -option caps:swapescape
+
+# nvm defaults
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # User configuration
 
