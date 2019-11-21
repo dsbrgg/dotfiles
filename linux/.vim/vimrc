@@ -187,6 +187,10 @@ let g:multi_cursor_prev_key            = '<C-p>'
 let g:multi_cursor_skip_key            = '<C-x>'
 let g:multi_cursor_quit_key            = '<Esc>'
 
+" Colorscheme settings
+let g:oceanic_next_terminal_bold = 1
+let g:oceanic_next_terminal_italic = 1
+
 set nobackup
 set nowb
 set noswapfile
@@ -196,9 +200,6 @@ set number
 "set termguicolors     " enable true colors support
 
 syntax on
-
-let g:oceanic_next_terminal_bold = 1
-let g:oceanic_next_terminal_italic = 1
 colorscheme OceanicNext
 
 hi Comment guifg=#5C6370 ctermfg=59
