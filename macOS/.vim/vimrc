@@ -1,4 +1,4 @@
-if empty(glob('~/.vim/autoload/plug.vim'))
+if empty(glob('~/.vim/autoload/plug.vim'))  
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
@@ -21,6 +21,7 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'qpkorr/vim-renamer'
+Plug 'xero/sourcerer.vim'
 
 call plug#end()
 
@@ -143,7 +144,6 @@ if has("autocmd")
   autocmd BufWritePre *.txt,*.js,*.py,*.wiki,*.sh,*.coffee :call CleanExtraSpaces()
 endif
 
-
 scriptencoding utf-8
 set encoding=utf-8
 
@@ -158,7 +158,8 @@ retab
 set path+=**                                                                    
 set wildignore+=**/node_modules/** 
 
-set updatetime=50
+" https://www.reddit.com/r/vim/comments/3ql651/what_do_you_set_your_updatetime_to/
+set updatetime=100
 
 let g:gitgutter_override_sign_column_highlight = 0
 let g:gitgutter_sign_added = '++'
@@ -195,6 +196,11 @@ let g:multi_cursor_prev_key            = '<C-p>'
 let g:multi_cursor_skip_key            = '<C-x>'
 let g:multi_cursor_quit_key            = '<Esc>'
 
+"   Range:   233 (darkest) ~ 238 (lightest)
+"   Default: 235
+let g:space_vim_dark_background = 235 
+let g:space_vim_dark_italics = 1
+
 set nobackup
 set nowb
 set noswapfile
@@ -203,9 +209,9 @@ set directory^=$HOME/.vim/tmp// " send swap files on .vim folder
 set number
 
 syntax on
-colorscheme space-vim-dark 
+colorscheme space-vim-dark
 
-hi Comment guifg=#5C6370 ctermfg=59
+hi Comment guifg=#5C6370 ctermfg=59 gui=italic cterm=italic
 
 if &term =~ '^screen'
   " tmux will send xterm-style keys when its xterm-keys option is on
