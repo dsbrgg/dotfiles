@@ -179,8 +179,9 @@ let g:ale_javascript_eslint_executable = 'npm run lint --'
 
 let g:vim_json_syntax_concealcursor = ""
 
+let g:indentLine_char = '┊'
 let g:indentLine_concealcursor = ""
-let g:indentLine_color_term = 239
+let g:indentLine_color_term = 133 
 
 let g:lightline = { 'colorscheme': 'jellybeans' }
 
@@ -199,7 +200,6 @@ let g:multi_cursor_quit_key            = '<Esc>'
 "   Range:   233 (darkest) ~ 238 (lightest)
 "   Default: 235
 let g:space_vim_dark_background = 235 
-let g:space_vim_dark_italics = 1
 
 set nobackup
 set nowb
