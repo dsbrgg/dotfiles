@@ -11,10 +11,10 @@ Plug 'liuchengxu/space-vim-dark'
 Plug 'mhartington/oceanic-next'
 
 Plug 'scrooloose/nerdtree'
-Plug 'elzr/vim-json'
 Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'w0rp/ale'
 Plug 'airblade/vim-gitgutter'
+Plug 'elzr/vim-json'
+Plug 'w0rp/ale'
 Plug 'ervandew/supertab'
 Plug 'itchyny/lightline.vim'
 Plug 'terryma/vim-multiple-cursors'
@@ -23,6 +23,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'qpkorr/vim-renamer'
 Plug 'mattn/emmet-vim'
+Plug 'Yggdroot/indentLine'
 
 call plug#end()
 
@@ -190,6 +191,12 @@ let g:multi_cursor_quit_key            = '<Esc>'
 " Colorscheme settings
 let g:oceanic_next_terminal_bold = 1
 let g:oceanic_next_terminal_italic = 1
+
+let g:indentLine_setColors = 0
+let g:indentLine_color_term = 239
+let g:indentLine_bgcolor_term = 202
+let g:indentLine_bgcolor_gui = '#FF5F00'
+let g:indentLine_char_list = ['┊']
 
 set nobackup
 set nowb
