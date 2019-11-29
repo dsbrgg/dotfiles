@@ -104,3 +104,15 @@ source $(brew --prefix nvm)/nvm.sh
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+############ dsbrgg scripts ############
+
+# githex
+# - extracts hex from git log line
+# - eg. githex 10 -> 98b7a2e
+githex() { line=$1 && git log | sed -n "${line}p" | cut -c 1-7; }
+
+# rebaser
+# - applies git rebase, based on a git log line
+# - eg. rebaser 10
+rebaser() { git rebase -i $(githex $1) }
