@@ -115,14 +115,20 @@ export NVM_DIR="$HOME/.nvm"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 
-############ dsbrgg scripts ############
+############ scripts ############
 
-# githex
+# gln
+# - prints git log with line number
+# - has to be used on folder with .git
+# - folder in it
+gln() { git log | nl -n ln; }
+
+# ghex
 # - extracts hex from git log line
 # - eg. githex 10 -> 98b7a2e
-githex() { line=$1 && git log | sed -n "${line}p" | cut -c 1-7; }
+ghex() { line=$1 && git log | sed -n "${line}p" | cut -c 1-7; }
 
-# rebaser
+# grbs 
 # - applies git rebase, based on a git log line
 # - eg. rebaser 10
-rebaser() { git rebase -i $(githex $1) }
+rebaser() { git rebase -i $(ghex $1) }
