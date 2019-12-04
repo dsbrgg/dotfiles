@@ -128,7 +128,13 @@ gln() { git log | nl -n ln; }
 # - eg. githex 10 -> 98b7a2e
 ghex() { line=$1 && git log | sed -n "${line}p" | cut -c 1-7; }
 
-# grbs 
+# rebaser
 # - applies git rebase, based on a git log line
 # - eg. rebaser 10
 rebaser() { git rebase -i $(ghex $1) }
+
+# dkrit
+# - access container with shell
+# - by the container id
+# - eg. dkrit a0c1b67e
+dkrit() { docker exec -it $1 /bin/sh; }
