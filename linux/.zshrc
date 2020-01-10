@@ -2,7 +2,8 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/opuzzz/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
+export PATH=/usr/local/opt/rabbitmq/sbin:/usr/local/Cellar/openvpn/2.4.8/sbin:/usr/local/opt/libpq/bin:/Users/dsbrgg/local/depot_tools/:$PATH
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -63,27 +64,11 @@ ZSH_THEME="kolo"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git debian python sudo zsh-autosuggestions)
 
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=201'
+# https://upload.wikimedia.org/wikipedia/commons/1/15/Xterm_256color_chart.svg
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=129'
 
 source $ZSH/oh-my-zsh.sh
-source $HOME/.manual/z.sh
-
-#####  z.sh optional configuration
-# $_Z_CMD to change the command name (default z).
-# $_Z_DATA to change the datafile (default $HOME/.z).
-# $_Z_NO_RESOLVE_SYMLINKS to prevent symlink resolution.
-# $_Z_NO_PROMPT_COMMAND to handle PROMPT_COMMAND/precmd  your-
-# .
-# $_Z_EXCLUDE_DIRS to an array of directory trees to  exclude.
-# $_Z_OWNER to allow usage when in 'sudo -s' mode.
-
-# sets caps lock as escape key
-setxkbmap -option caps:swapescape
-
-# nvm defaults
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+source /usr/local/etc/profile.d/z.sh
 
 # User configuration
 
@@ -111,22 +96,41 @@ export NVM_DIR="$HOME/.nvm"
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
+alias tmux="TERM=screen-256color tmux -u"
+alias vim="/usr/local/bin/vim"
+alias c="clear"
 
+# NVM setup
+export NVM_DIR="$HOME/.nvm"
+source $(brew --prefix nvm)/nvm.sh
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# fzf for vim 
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# fix warning message
+export LC_ALL=en_US.UTF-8
+
+# nnn env variables
+
+export NNN_USE_EDITOR=1
 
 ############ scripts ############
 
 # gln
 # - prints git log with line number
 # - has to be used on folder with .git
-# - folder in it
-gln() { git log | nl -n ln; }
+# - folder in it.
+# - optional args: line number -> $1
+#
+# - eg. gln || gln 10
+gln() { git log -$1 | nl -n ln; }
 
 # ghex
 # - extracts hex from git log line
 # - eg. githex 10 -> 98b7a2e
-ghex() { line=$1 && git log | sed -n "${line}p" | cut -c 1-7; }
+ghex() { line=$(($1+1)) && git log | sed -n "${line}p" | cut -c 1-7; }
 
 # rebaser
 # - applies git rebase, based on a git log line
@@ -138,3 +142,44 @@ rebaser() { git rebase -i $(ghex $1) }
 # - by the container id
 # - eg. dkrit a0c1b67e
 dkrit() { docker exec -it $1 /bin/sh; }
+
+dkrrmall() {
+  docker container stop $(docker ps -a -q);
+  yes | docker container prune;
+}
+
+# seegno docker aliases
+dkr(){
+  case $1 in
+    rmc) echo -n "Are you sure you want to remove all containers?(y/n) "
+         read answer
+         case $answer:l in
+           y|yes) docker rm $(docker ps -a -q) ;;
+           *) ;;
+         esac ;;
+    rmi) echo -n "Are you sure you want to remove all images?(y/n) "
+         read answer
+         case $answer:l in
+           y|yes) if [[ $2 == -f || $2 == --force ]] ; then docker rmi -f $(docker images -q)
+                  else docker rmi $(docker images -q) ; fi ;;
+           *) ;;
+         esac ;;
+    (kill|k)) docker kill $(docker ps -q) ;;
+    reset) echo -e "\e[0;31mWARNING: This will clear all unused networks and delete all containers and images. \e[0;0m"
+           echo -n "Are you sure you want to reset?(y/n) "
+           read answer
+           case $answer:l in
+             y|yes) docker kill $(docker ps -q) | docker network prune | docker rm $(docker ps -q) | docker rmi $(docker images -q) ;;
+             *) ;;
+           esac ;;
+    login) $(aws ecr get-login --no-include-email) ;;
+    *) echo "Usage: $0 {rmc|rmi|kill|k|reset|login}" ;;
+  esac
+}
+
+# seegno z aliases
+if ((!$+commands[fasd])); then
+  return 1
+fi
+
+alias z='fasd_cd -d'
