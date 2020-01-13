@@ -22,6 +22,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'qpkorr/vim-renamer'
 Plug 'xero/sourcerer.vim'
+Plug 'eemed/sitruuna.vim'
 
 call plug#end()
 
@@ -181,7 +182,7 @@ let g:vim_json_syntax_concealcursor = ""
 
 let g:indentLine_char = '┊'
 let g:indentLine_concealcursor = ""
-let g:indentLine_color_term = 133 
+let g:indentLine_color_term = 245 
 
 let g:lightline = { 'colorscheme': 'jellybeans' }
 
@@ -197,9 +198,15 @@ let g:multi_cursor_prev_key            = '<C-p>'
 let g:multi_cursor_skip_key            = '<C-x>'
 let g:multi_cursor_quit_key            = '<Esc>'
 
+" Themes config
+
+" space_vim_dask theme
 "   Range:   233 (darkest) ~ 238 (lightest)
 "   Default: 235
 let g:space_vim_dark_background = 235 
+
+" sitruuna_fzf theme
+" let g:sitruuna_fzf = 0
 
 set nobackup
 set nowb
