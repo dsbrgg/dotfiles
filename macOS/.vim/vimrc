@@ -162,14 +162,15 @@ set wildignore+=**/node_modules/**
 " https://www.reddit.com/r/vim/comments/3ql651/what_do_you_set_your_updatetime_to/
 set updatetime=100
 
+highlight ALEWarning ctermbg=DarkMagenta
+highlight SignColumn ctermbg=white    " terminal Vim
+
 let g:gitgutter_override_sign_column_highlight = 0
 let g:gitgutter_sign_added = '++'
 let g:gitgutter_sign_modified = '~~'
 let g:gitgutter_sign_removed = '--'
 let g:gitgutter_sign_removed_first_line = '^^'
 let g:gitgutter_sign_modified_removed = 'ww'
-
-highlight SignColumn ctermbg=white    " terminal Vim
 
 let g:NERDTreeDirArrows=0
 let g:NERDTreeWinSize = 40
