@@ -65,7 +65,7 @@ ZSH_THEME="kolo"
 plugins=(git debian python sudo zsh-autosuggestions)
 
 # https://upload.wikimedia.org/wikipedia/commons/1/15/Xterm_256color_chart.svg
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=129'
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=240'
 
 source $ZSH/oh-my-zsh.sh
 source /usr/local/etc/profile.d/z.sh
@@ -143,13 +143,16 @@ rebaser() { git rebase -i $(ghex $1) }
 # - eg. dkrit a0c1b67e
 dkrit() { docker exec -it $1 /bin/sh; }
 
+# dkrrmall
+# - remove all containers from docker
+# - eg. dkrrmall
 dkrrmall() {
   docker container stop $(docker ps -a -q);
   yes | docker container prune;
 }
 
 # seegno docker aliases
-dkr(){
+dkr() {
   case $1 in
     rmc) echo -n "Are you sure you want to remove all containers?(y/n) "
          read answer
@@ -176,10 +179,3 @@ dkr(){
     *) echo "Usage: $0 {rmc|rmi|kill|k|reset|login}" ;;
   esac
 }
-
-# seegno z aliases
-if ((!$+commands[fasd])); then
-  return 1
-fi
-
-alias z='fasd_cd -d'
