@@ -5,7 +5,6 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.vim/plugged')
-
 Plug 'ayu-theme/ayu-vim'
 Plug 'liuchengxu/space-vim-dark'
 Plug 'Yggdroot/indentLine'
@@ -23,7 +22,6 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'qpkorr/vim-renamer'
 Plug 'xero/sourcerer.vim'
 Plug 'eemed/sitruuna.vim'
-
 call plug#end()
 
 " use system's clipboard
@@ -32,6 +30,9 @@ noremap ,y "*y
 noremap ,p "*p
 noremap ,Y "+y
 noremap ,P "+p
+
+" use relative number
+set number relativenumber
 
 " delete line/characters without copying to clipboard
 " https://stackoverflow.com/questions/11993851/how-to-delete-not-cut-in-vim
