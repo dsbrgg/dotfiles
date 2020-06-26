@@ -24,17 +24,18 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'qpkorr/vim-renamer'
 Plug 'mattn/emmet-vim'
 Plug 'Yggdroot/indentLine'
-
 call plug#end()
+
+:let mapleader = " "
 
 map <C-n> :NERDTreeToggle<CR>
 map <C-m> :NERDTreeFocus<CR>
 
 " ,t + arrow to move through vim tabhorizontals
-map ,t<up> :tabr<CR>
-map ,t<down> :tabl<CR>
-map ,t<left> :tabp<CR>
-map ,t<right> :tabn<CR>
+map <leader>t<up> :tabr<CR>
+map <leader>,t<down> :tabl<CR>
+map <leader>,t<left> :tabp<CR>
+map <leader>,t<right> :tabn<CR>
 
 " first :echo has('clipboard') to check if current vim has feature
 " if not, sudo apt install vim-gtk3
@@ -43,11 +44,14 @@ vmap ,y "+y
 nmap ,p "+p
 
 " split screen with ,w + v(vertical) || s(horizontal)
-nnoremap ,w <C-w>
+nnoremap <leader>w <C-w>
 
 autocmd BufEnter * lcd %:p:h
 
 filetype plugin indent on
+
+" use relative number
+set number relativenumber
 
 set clipboard=unnamedplus
 
@@ -107,8 +111,8 @@ vnoremap <silent> * :<C-u>call VisualSelection('', '')<CR>/<C-R>=@/<CR><CR>
 vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
 
 " Map <Space> to / (search) and Ctrl-<Space> to ? (backwards search)
-map <space> /
-map <c-space> ?
+map , /
+map <C>, ?
 
 " Always show the status line
 set laststatus=2

@@ -52,7 +52,7 @@ map <leader>,t<left> :tabp<CR>
 map <leader>,t<right> :tabn<CR>
 
 " split screen with ,w + v(vertical) || s(horizontal)
-nnoremap ,w <C-w>
+nnoremap <leader>w <C-w>
 
 autocmd BufEnter * lcd %:p:h
 
