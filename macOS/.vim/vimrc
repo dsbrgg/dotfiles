@@ -24,6 +24,8 @@ Plug 'xero/sourcerer.vim'
 Plug 'eemed/sitruuna.vim'
 call plug#end()
 
+:let mapleader = " "
+
 " use system's clipboard
 set clipboard^=unnamed,unnamedplus
 noremap ,y "*y
@@ -44,10 +46,10 @@ map <C-n> :NERDTreeToggle<CR>
 map <C-m> :NERDTreeFocus<CR>
 
 " ,t + arrow to move through vim tabhorizontals
-map ,t<up> :tabr<CR>
-map ,t<down> :tabl<CR>
-map ,t<left> :tabp<CR>
-map ,t<right> :tabn<CR>
+map <leader>t<up> :tabr<CR>
+map <leader>,t<down> :tabl<CR>
+map <leader>,t<left> :tabp<CR>
+map <leader>,t<right> :tabn<CR>
 
 " split screen with ,w + v(vertical) || s(horizontal)
 nnoremap ,w <C-w>
@@ -114,8 +116,8 @@ vnoremap <silent> * :<C-u>call VisualSelection('', '')<CR>/<C-R>=@/<CR><CR>
 vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
 
 " Map <Space> to / (search) and Ctrl-<Space> to ? (backwards search)
-map <space> /
-map <c-space> ?
+map , /
+map <C>, ?
 
 " Always show the status line
 set laststatus=2
@@ -209,6 +211,9 @@ let g:space_vim_dark_background = 235
 
 " sitruuna_fzf theme
 " let g:sitruuna_fzf = 0
+
+" Interpret .svelte syntax as .html files
+au! BufNewFile,BufRead *.svelte set ft=html
 
 set nobackup
 set nowb
