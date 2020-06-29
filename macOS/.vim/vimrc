@@ -28,10 +28,10 @@ call plug#end()
 
 " use system's clipboard
 set clipboard^=unnamed,unnamedplus
-noremap ,y "*y
-noremap ,p "*p
-noremap ,Y "+y
-noremap ,P "+p
+noremap <leader>y "*y
+noremap <leader>p "*p
+noremap <leader>Y "+y
+noremap <leader>P "+p
 
 " use relative number
 set number relativenumber
@@ -115,7 +115,7 @@ set tm=500
 vnoremap <silent> * :<C-u>call VisualSelection('', '')<CR>/<C-R>=@/<CR><CR>
 vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
 
-" Map <Space> to / (search) and Ctrl-<Space> to ? (backwards search)
+" Map , to / (search) and Ctrl-, to ? (backwards search)
 map , /
 map <C>, ?
 
