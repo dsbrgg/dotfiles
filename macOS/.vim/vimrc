@@ -22,6 +22,8 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'qpkorr/vim-renamer'
 Plug 'xero/sourcerer.vim'
 Plug 'eemed/sitruuna.vim'
+Plug 'camspiers/animate.vim'
+Plug 'camspiers/lens.vim'
 call plug#end()
 
 :let mapleader = " "
