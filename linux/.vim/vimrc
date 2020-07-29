@@ -24,7 +24,12 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'qpkorr/vim-renamer'
 Plug 'mattn/emmet-vim'
 Plug 'Yggdroot/indentLine'
+Plug 'camspiers/animate.vim'
+Plug 'camspiers/lens.vim'
 call plug#end()
+
+" --------------- Resources
+" https://upload.wikimedia.org/wikipedia/commons/1/15/Xterm_256color_chart.svg
 
 :let mapleader = " "
 
@@ -143,6 +148,8 @@ if has("autocmd")
   autocmd BufWritePre *.txt,*.js,*.py,*.wiki,*.sh,*.coffee :call CleanExtraSpaces()
 endif
 
+" Interpret .svelte syntax as .html files
+au! BufNewFile,BufRead *.svelte set ft=html
 
 scriptencoding utf-8
 set encoding=utf-8
@@ -196,11 +203,14 @@ let g:multi_cursor_quit_key            = '<Esc>'
 let g:oceanic_next_terminal_bold = 1
 let g:oceanic_next_terminal_italic = 1
 
-let g:indentLine_setColors = 0
+" let g:indentLine_setColors = 0
 let g:indentLine_color_term = 239
-let g:indentLine_bgcolor_term = 202
-let g:indentLine_bgcolor_gui = '#FF5F00'
+" let g:indentLine_bgcolor_term = 239
+" let g:indentLine_bgcolor_gui = '#FF5F00'
 let g:indentLine_char_list = ['┊']
+
+" Minimum with size upon resize
+let g:lens#width_resize_min = 200
 
 set nobackup
 set nowb
