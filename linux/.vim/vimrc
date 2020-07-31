@@ -55,6 +55,13 @@ autocmd BufEnter * lcd %:p:h
 
 filetype plugin indent on
 
+" Send more characters for redraw
+set ttyfast
+set ttymouse=sgr
+
+" Enable mouse
+set mouse=a
+
 " use relative number
 set number relativenumber
 
