@@ -170,7 +170,8 @@ set ttymouse=sgr
 " Enable mouse
 set mouse=a
 
-highlight ALEWarning ctermbg=DarkMagenta
+highlight ALEError ctermbg=none cterm=underline 
+highlight ALEWarning ctermbg=none cterm=underline
 highlight SignColumn ctermbg=white    " terminal Vim
 
 let g:gitgutter_override_sign_column_highlight = 0
@@ -186,6 +187,7 @@ let g:NERDTreeDirArrows=0
 let g:ale_completion_enabled = 1
 let b:ale_linters = ['eslint']
 let g:ale_javascript_eslint_executable = 'npm run lint --'
+let g:ale_set_hightlights = 0
 
 let g:vim_json_syntax_concealcursor = ""
 
