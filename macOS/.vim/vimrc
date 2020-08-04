@@ -14,6 +14,7 @@ Plug 'elzr/vim-json'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'w0rp/ale'
 Plug 'airblade/vim-gitgutter'
+Plug 'itchyny/vim-gitbranch'
 Plug 'ervandew/supertab'
 Plug 'itchyny/lightline.vim'
 Plug 'terryma/vim-multiple-cursors'
@@ -21,8 +22,6 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'qpkorr/vim-renamer'
-Plug 'xero/sourcerer.vim'
-Plug 'eemed/sitruuna.vim'
 Plug 'camspiers/animate.vim'
 Plug 'camspiers/lens.vim'
 call plug#end()
@@ -170,9 +169,10 @@ set ttymouse=sgr
 " Enable mouse
 set mouse=a
 
-highlight ALEError ctermbg=none cterm=underline 
-highlight ALEWarning ctermbg=none cterm=underline
+highlight ALEError ctermbg=none ctermfg=none cterm=bold 
+highlight ALEWarning ctermbg=none ctermfg=none cterm=bold
 highlight SignColumn ctermbg=white    " terminal Vim
+highlight Visual term=reverse cterm=none guibg=Grey
 
 let g:gitgutter_override_sign_column_highlight = 0
 let g:gitgutter_sign_added = '++'
@@ -191,7 +191,22 @@ let g:ale_set_hightlights = 0
 
 let g:vim_json_syntax_concealcursor = ""
 
-let g:lightline = { 'colorscheme': 'jellybeans' }
+let g:lightline = {
+  \ 'colorscheme': 'PaperColor',
+  \ 'active': {
+  \   'left': [ [ 'mode', 'paste' ],
+  \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+  \ },
+  \ 'component_function': {
+  \   'gitbranch': 'gitbranch#name'
+  \ },
+  \ 'tabline': {
+  \   'left': [ ['tabs'] ],
+  \   'right': [ ['bufnum'] ]
+  \ }, 
+  \ 'separator': { 'left': "\ue0b0", 'right': "\ue0b2" },
+  \ 'subseparator': { 'left': "\ue0b1", 'right': "\ue0b3" }
+  \ }
 
 let g:multi_cursor_use_default_mapping=0
 
