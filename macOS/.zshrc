@@ -4,6 +4,7 @@
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 export PATH=/usr/local/opt/rabbitmq/sbin:/usr/local/Cellar/openvpn/2.4.8/sbin:/usr/local/opt/libpq/bin:/Users/dsbrgg/local/depot_tools/:$PATH
+export EDITOR=vim
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -65,7 +66,7 @@ ZSH_THEME="kolo"
 plugins=(git debian python sudo zsh-autosuggestions)
 
 # https://upload.wikimedia.org/wikipedia/commons/1/15/Xterm_256color_chart.svg
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=129'
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=007'
 
 source $ZSH/oh-my-zsh.sh
 source /usr/local/etc/profile.d/z.sh
@@ -144,7 +145,11 @@ rebaser() { git rebase -i $(ghex $1) }
 dkrit() { docker exec -it $1 /bin/sh; }
 
 dkrrmall() {
+  volumes=$(docker volume ls | awk '{ print $2 }')
+
   docker container stop $(docker ps -a -q);
+
+  docker volume rm $volumes;
   yes | docker container prune;
 }
 
@@ -175,6 +180,29 @@ dkr(){
     login) $(aws ecr get-login --no-include-email) ;;
     *) echo "Usage: $0 {rmc|rmi|kill|k|reset|login}" ;;
   esac
+}
+
+# broot is a new way to list directories on the terminal
+# brew|apt install broot
+
+br() {
+    f=$(mktemp)
+    (
+	set +e
+	broot --outcmd "$f" "$@"
+	code=$?
+	if [ "$code" != 0 ]; then
+	    rm -f "$f"
+	    exit "$code"
+	fi
+    )
+    code=$?
+    if [ "$code" != 0 ]; then
+	return "$code"
+    fi
+    d=$(<"$f")
+    rm -f "$f"
+    eval "$d"
 }
 
 # seegno z aliases
