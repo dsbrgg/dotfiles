@@ -49,9 +49,9 @@ map <C-m> :NERDTreeFocus<CR>
 
 " ,t + arrow to move through vim tabhorizontals
 map <leader>t<up> :tabr<CR>
-map <leader>,t<down> :tabl<CR>
-map <leader>,t<left> :tabp<CR>
-map <leader>,t<right> :tabn<CR>
+map <leader>t<down> :tabl<CR>
+map <leader>t<left> :tabp<CR>
+map <leader>t<right> :tabn<CR>
 
 " split screen with ,w + v(vertical) || s(horizontal)
 nnoremap <leader>w <C-w>
