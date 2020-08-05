@@ -5,17 +5,14 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.vim/plugged')
-
-Plug 'ayu-theme/ayu-vim'
-Plug 'liuchengxu/space-vim-dark'
 Plug 'mhartington/oceanic-next'
-
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'airblade/vim-gitgutter'
 Plug 'elzr/vim-json'
 Plug 'w0rp/ale'
 Plug 'ervandew/supertab'
+Plug 'itchyny/vim-gitbranch'
 Plug 'itchyny/lightline.vim'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -36,17 +33,23 @@ call plug#end()
 map <C-n> :NERDTreeToggle<CR>
 map <C-m> :NERDTreeFocus<CR>
 
+" delete line/characters without copying to clipboard
+" https://stackoverflow.com/questions/11993851/how-to-delete-not-cut-in-vim
+nnoremap <leader>d "_d
+xnoremap <leader>d "_d
+xnoremap <leader>p "_dP
+
 " ,t + arrow to move through vim tabhorizontals
 map <leader>t<up> :tabr<CR>
-map <leader>,t<down> :tabl<CR>
-map <leader>,t<left> :tabp<CR>
-map <leader>,t<right> :tabn<CR>
+map <leader>t<down> :tabl<CR>
+map <leader>t<left> :tabp<CR>
+map <leader>t<right> :tabn<CR>
 
 " first :echo has('clipboard') to check if current vim has feature
 " if not, sudo apt install vim-gtk3
 " these maps yanking and pasting to the system clipboard
-vmap ,y "+y
-nmap ,p "+p
+vmap <leader>y "+y
+nmap <leader>p "+p
 
 " split screen with ,w + v(vertical) || s(horizontal)
 nnoremap <leader>w <C-w>
@@ -184,7 +187,7 @@ let g:gitgutter_sign_modified_removed = 'ww'
 highlight SignColumn ctermbg=white    " terminal Vim
 
 let g:NERDTreeDirArrows=0
-let g:NERDTreeWinSize = 40
+let g:NERDTreeWinSize = 60
 
 let g:ale_completion_enabled = 1
 let b:ale_linters = ['eslint']
@@ -192,7 +195,22 @@ let g:ale_javascript_eslint_executable = 'npm run lint --'
 
 let g:vim_json_syntax_concealcursor = ""
 
-let g:lightline = { 'colorscheme': 'one' }
+let g:lightline = { 
+  \ 'colorscheme': 'one',
+  \ 'active': {
+  \   'left': [ [ 'mode', 'paste' ],
+  \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+  \ },
+  \ 'component_function': {
+  \   'gitbranch': 'gitbranch#name'
+  \ },
+  \ 'tabline': {
+  \   'left': [ ['tabs'] ],
+  \   'right': [ ['bufnum'] ]
+  \ }, 
+  \ 'separator': { 'left': "\ue0b0", 'right': "\ue0b2" },
+  \ 'subseparator': { 'left': "\ue0b1", 'right': "\ue0b3" }
+  \ }
 
 let g:multi_cursor_use_default_mapping=0
 
@@ -217,7 +235,7 @@ let g:indentLine_color_term = 239
 let g:indentLine_char_list = ['┊']
 
 " Minimum with size upon resize
-let g:lens#width_resize_min = 200
+let g:lens#width_resize_min = 60
 
 set nobackup
 set nowb
@@ -225,20 +243,12 @@ set noswapfile
 set directory^=$HOME/.vim/tmp// " send swap files on .vim folder
 
 set number
-"set termguicolors     " enable true colors support
+set termguicolors     " enable true colors support
 
 syntax on
 colorscheme OceanicNext
 
 hi Comment guifg=#5C6370 ctermfg=59
-
-" Returns true if paste mode is enabled
-function! HasPaste()
-    if &paste
-        return 'PASTE MODE  '
-    endif
-    return ''
-endfunction
 
 if &term =~ '^screen'
   " tmux will send xterm-style keys when its xterm-keys option is on
