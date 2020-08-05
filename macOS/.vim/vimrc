@@ -24,6 +24,7 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'qpkorr/vim-renamer'
 Plug 'camspiers/animate.vim'
 Plug 'camspiers/lens.vim'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
 
 :let mapleader = " "
