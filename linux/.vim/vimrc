@@ -11,7 +11,6 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'airblade/vim-gitgutter'
 Plug 'elzr/vim-json'
 Plug 'w0rp/ale'
-Plug 'ervandew/supertab'
 Plug 'itchyny/vim-gitbranch'
 Plug 'itchyny/lightline.vim'
 Plug 'terryma/vim-multiple-cursors'
@@ -23,6 +22,7 @@ Plug 'mattn/emmet-vim'
 Plug 'Yggdroot/indentLine'
 Plug 'camspiers/animate.vim'
 Plug 'camspiers/lens.vim'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
 
 " --------------- Resources
@@ -236,6 +236,24 @@ let g:indentLine_char_list = ['┊']
 
 " Minimum with size upon resize
 let g:lens#width_resize_min = 60
+
+let g:coc_global_extensions = [
+	\ 'coc-css',
+	\ 'coc-html',
+	\ 'coc-json',
+	\ 'coc-snippets',
+	\ 'coc-tsserver',
+  \ 'coc-css',
+  \ 'coc-eslint',
+  \ 'coc-git',
+  \ 'coc-sh',
+  \ 'coc-svelte',
+  \ 'coc-rls',
+  \ 'coc-python',
+  \ 'coc-go',
+  \ 'coc-markdownlint',
+  \ 'coc-omnisharp',
+\ ]
 
 set nobackup
 set nowb
