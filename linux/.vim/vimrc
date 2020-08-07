@@ -9,7 +9,6 @@ Plug 'mhartington/oceanic-next'
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'airblade/vim-gitgutter'
-Plug 'elzr/vim-json'
 Plug 'w0rp/ale'
 Plug 'itchyny/vim-gitbranch'
 Plug 'itchyny/lightline.vim'
@@ -177,6 +176,8 @@ set wildignore+=**/node_modules/**
 
 set updatetime=50
 
+set conceallevel=2
+
 let g:gitgutter_override_sign_column_highlight = 0
 let g:gitgutter_sign_added = '++'
 let g:gitgutter_sign_modified = '~~'
@@ -192,8 +193,6 @@ let g:NERDTreeWinSize = 60
 let g:ale_completion_enabled = 1
 let b:ale_linters = ['eslint']
 let g:ale_javascript_eslint_executable = 'npm run lint --'
-
-let g:vim_json_syntax_concealcursor = ""
 
 let g:lightline = { 
   \ 'colorscheme': 'one',
@@ -228,21 +227,20 @@ let g:multi_cursor_quit_key            = '<Esc>'
 let g:oceanic_next_terminal_bold = 1
 let g:oceanic_next_terminal_italic = 1
 
-" let g:indentLine_setColors = 0
+let g:indentLine_setConceal = 0
 let g:indentLine_color_term = 239
-" let g:indentLine_bgcolor_term = 239
-" let g:indentLine_bgcolor_gui = '#FF5F00'
 let g:indentLine_char_list = ['┊']
 
 " Minimum with size upon resize
 let g:lens#width_resize_min = 60
 
+" Make coc.nvim automatically download these extensions
 let g:coc_global_extensions = [
-	\ 'coc-css',
-	\ 'coc-html',
-	\ 'coc-json',
-	\ 'coc-snippets',
-	\ 'coc-tsserver',
+  \ 'coc-css',
+  \ 'coc-html',
+  \ 'coc-json',
+  \ 'coc-snippets',
+  \ 'coc-tsserver',
   \ 'coc-css',
   \ 'coc-eslint',
   \ 'coc-git',
