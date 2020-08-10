@@ -17,13 +17,12 @@ Plug 'airblade/vim-gitgutter'
 Plug 'itchyny/vim-gitbranch'
 Plug 'itchyny/lightline.vim'
 Plug 'terryma/vim-multiple-cursors'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'qpkorr/vim-renamer'
 Plug 'camspiers/animate.vim'
 Plug 'camspiers/lens.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'wincent/ferret'
 call plug#end()
 
 :let mapleader = " "
@@ -44,8 +43,8 @@ nnoremap <leader>d "_d
 xnoremap <leader>d "_d
 xnoremap <leader>p "_dP
 
-map <C-n> :NERDTreeToggle<CR>
-map <C-m> :NERDTreeFocus<CR>
+map <leader>n :NERDTreeToggle<CR>
+map <leader>m :NERDTreeFocus<CR>
 
 " ,t + arrow to move through vim tabhorizontals
 map <leader>t<up> :tabr<CR>
@@ -224,24 +223,6 @@ let g:lens#width_resize_max = 50
 
 " disable indentLines on NERDTree
 let g:indentLine_fileTypeExclude = ['nerdtree']
-
-let g:coc_global_extensions = [
-	\ 'coc-css',
-	\ 'coc-html',
-	\ 'coc-json',
-	\ 'coc-snippets',
-	\ 'coc-tsserver',
-  \ 'coc-css',
-  \ 'coc-eslint',
-  \ 'coc-git',
-  \ 'coc-sh',
-  \ 'coc-svelte',
-  \ 'coc-rls',
-  \ 'coc-python',
-  \ 'coc-go',
-  \ 'coc-markdownlint',
-  \ 'coc-omnisharp',
-\ ]
 
 " Interpret .svelte syntax as .html files
 au! BufNewFile,BufRead *.svelte set ft=html
