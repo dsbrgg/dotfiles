@@ -13,8 +13,6 @@ Plug 'w0rp/ale'
 Plug 'itchyny/vim-gitbranch'
 Plug 'itchyny/lightline.vim'
 Plug 'terryma/vim-multiple-cursors'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'qpkorr/vim-renamer'
 Plug 'mattn/emmet-vim'
@@ -22,6 +20,7 @@ Plug 'Yggdroot/indentLine'
 Plug 'camspiers/animate.vim'
 Plug 'camspiers/lens.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'wincent/ferret'
 call plug#end()
 
 " --------------- Resources
@@ -29,8 +28,8 @@ call plug#end()
 
 :let mapleader = " "
 
-map <C-n> :NERDTreeToggle<CR>
-map <C-m> :NERDTreeFocus<CR>
+map <leader>n :NERDTreeToggle<CR>
+map <leader>m :NERDTreeFocus<CR>
 
 " delete line/characters without copying to clipboard
 " https://stackoverflow.com/questions/11993851/how-to-delete-not-cut-in-vim
