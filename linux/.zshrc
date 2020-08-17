@@ -1,11 +1,13 @@
 # If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="$HOME/.oh-my-zsh"
-export PATH=/usr/local/opt/rabbitmq/sbin:/usr/local/Cellar/openvpn/2.4.8/sbin:/usr/local/opt/libpq/bin:/Users/dsbrgg/local/depot_tools/:$PATH
+export ZSH="/home/opuzzz/.oh-my-zsh"
+export PATH=$HOME/bin:/usr/local/bin:$PATH
+export STASH=$HOME/Drive
 
-# Set name of the theme to load. Optionally, if you set this to "random"
+
+
+ #Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME="kolo"
@@ -64,11 +66,27 @@ ZSH_THEME="kolo"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git debian python sudo zsh-autosuggestions)
 
-# https://upload.wikimedia.org/wikipedia/commons/1/15/Xterm_256color_chart.svg
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=240'
 
 source $ZSH/oh-my-zsh.sh
-source /usr/local/etc/profile.d/z.sh
+source $HOME/.manual/z.sh
+
+#####  z.sh optional configuration
+# $_Z_CMD to change the command name (default z).
+# $_Z_DATA to change the datafile (default $HOME/.z).
+# $_Z_NO_RESOLVE_SYMLINKS to prevent symlink resolution.
+# $_Z_NO_PROMPT_COMMAND to handle PROMPT_COMMAND/precmd  your-
+# .
+# $_Z_EXCLUDE_DIRS to an array of directory trees to  exclude.
+# $_Z_OWNER to allow usage when in 'sudo -s' mode.
+
+# sets caps lock as escape key
+setxkbmap -option caps:swapescape
+
+# nvm defaults
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # User configuration
 
@@ -96,25 +114,9 @@ source /usr/local/etc/profile.d/z.sh
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
-alias tmux="TERM=screen-256color tmux -u"
-alias vim="/usr/local/bin/vim"
-alias c="clear"
+# alias zshconfig="mate ~/.zshrc"
+# alias ohmyzsh="mate ~/.oh-my-zsh"
 
-# NVM setup
-export NVM_DIR="$HOME/.nvm"
-source $(brew --prefix nvm)/nvm.sh
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-# fzf for vim 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-# fix warning message
-export LC_ALL=en_US.UTF-8
-
-# nnn env variables
-
-export NNN_USE_EDITOR=1
 
 ############ scripts ############
 
@@ -151,31 +153,10 @@ dkrrmall() {
   yes | docker container prune;
 }
 
-# seegno docker aliases
-dkr() {
-  case $1 in
-    rmc) echo -n "Are you sure you want to remove all containers?(y/n) "
-         read answer
-         case $answer:l in
-           y|yes) docker rm $(docker ps -a -q) ;;
-           *) ;;
-         esac ;;
-    rmi) echo -n "Are you sure you want to remove all images?(y/n) "
-         read answer
-         case $answer:l in
-           y|yes) if [[ $2 == -f || $2 == --force ]] ; then docker rmi -f $(docker images -q)
-                  else docker rmi $(docker images -q) ; fi ;;
-           *) ;;
-         esac ;;
-    (kill|k)) docker kill $(docker ps -q) ;;
-    reset) echo -e "\e[0;31mWARNING: This will clear all unused networks and delete all containers and images. \e[0;0m"
-           echo -n "Are you sure you want to reset?(y/n) "
-           read answer
-           case $answer:l in
-             y|yes) docker kill $(docker ps -q) | docker network prune | docker rm $(docker ps -q) | docker rmi $(docker images -q) ;;
-             *) ;;
-           esac ;;
-    login) $(aws ecr get-login --no-include-email) ;;
-    *) echo "Usage: $0 {rmc|rmi|kill|k|reset|login}" ;;
-  esac
+open() {
+  xdg-open $1;
 }
+
+############ end scripts ############
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
