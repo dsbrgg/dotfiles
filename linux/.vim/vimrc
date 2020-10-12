@@ -21,6 +21,7 @@ Plug 'camspiers/animate.vim'
 Plug 'camspiers/lens.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'wincent/ferret'
+Plug 'AndrewRadev/splitjoin.vim'
 call plug#end()
 
 " --------------- Resources
