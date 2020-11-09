@@ -168,6 +168,8 @@ set ttymouse=sgr
 " Enable mouse
 set mouse=a
 
+set conceallevel=2
+
 highlight ALEError ctermbg=none ctermfg=none cterm=bold 
 highlight ALEWarning ctermbg=none ctermfg=none cterm=bold
 highlight SignColumn ctermbg=white    " terminal Vim
@@ -223,6 +225,7 @@ let g:lens#width_resize_max = 50
 
 " disable indentLines on NERDTree
 let g:indentLine_fileTypeExclude = ['nerdtree']
+let g:indentLine_setConceal = 0
 
 " Interpret .svelte syntax as .html files
 au! BufNewFile,BufRead *.svelte set ft=html
