@@ -5,8 +5,6 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.vim/plugged')
-Plug 'ayu-theme/ayu-vim'
-Plug 'liuchengxu/space-vim-dark'
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'scrooloose/nerdtree'
 Plug 'Yggdroot/indentLine'
@@ -16,13 +14,12 @@ Plug 'w0rp/ale'
 Plug 'airblade/vim-gitgutter'
 Plug 'itchyny/vim-gitbranch'
 Plug 'itchyny/lightline.vim'
-Plug 'terryma/vim-multiple-cursors'
 Plug 'jiangmiao/auto-pairs'
-Plug 'qpkorr/vim-renamer'
 Plug 'camspiers/animate.vim'
 Plug 'camspiers/lens.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'wincent/ferret'
+Plug 'brooth/far.vim'
 call plug#end()
 
 :let mapleader = " "
