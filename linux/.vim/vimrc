@@ -12,16 +12,15 @@ Plug 'airblade/vim-gitgutter'
 Plug 'w0rp/ale'
 Plug 'itchyny/vim-gitbranch'
 Plug 'itchyny/lightline.vim'
-Plug 'terryma/vim-multiple-cursors'
 Plug 'jiangmiao/auto-pairs'
-Plug 'qpkorr/vim-renamer'
-Plug 'mattn/emmet-vim'
 Plug 'Yggdroot/indentLine'
 Plug 'camspiers/animate.vim'
 Plug 'camspiers/lens.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'wincent/ferret'
 Plug 'AndrewRadev/splitjoin.vim'
+Plug 'turbio/bracey.vim'
+Plug 'brooth/far.vim'
 call plug#end()
 
 " --------------- Resources
@@ -232,7 +231,8 @@ let g:indentLine_color_term = 239
 let g:indentLine_char_list = ['┊']
 
 " Minimum with size upon resize
-let g:lens#width_resize_min = 60
+let g:lens#width_resize_min = 40
+let g:lens#width_resize_max = 60
 
 " Make coc.nvim automatically download these extensions
 let g:coc_global_extensions = [
@@ -249,9 +249,13 @@ let g:coc_global_extensions = [
   \ 'coc-rls',
   \ 'coc-python',
   \ 'coc-go',
-  \ 'coc-markdownlint',
   \ 'coc-omnisharp',
 \ ]
+
+" Refresh bracey live server on save
+let g:bracey_refresh_on_save = 1
+let g:bracey_refresh_js_files_on_save = 1
+let g:bracey_eval_on_save = 1
 
 set nobackup
 set nowb
